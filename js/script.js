@@ -50,7 +50,19 @@ function examPaper(assets) {
     document.body.appendChild(tb);
 
     const picDir = assets.contents[getRandom(assets.contents.length)];
-    for (let i = 0; i < 10; i ++) {
+    for (let i = 0; i < 5; i ++) {
+        const tr = document.createElement("TR");
+
+        for (let j = 0; j < 2; j ++) {
+            const td = document.createElement("TD");
+            const div = questionCell(5, picDir);
+            td.appendChild(div)
+            tr.appendChild(td);
+        }
+        tb.appendChild(tr);
+    }
+    tb.appendChild(document.createElement("HR"));
+    for (let i = 0; i < 5; i ++) {
         const tr = document.createElement("TR");
 
         for (let j = 0; j < 2; j ++) {
