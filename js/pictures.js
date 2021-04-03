@@ -1,3 +1,4 @@
+const assets =
 [
   {"type":"directory","name":"assets/","contents":[
     {"type":"directory","name":"animals","contents":[
