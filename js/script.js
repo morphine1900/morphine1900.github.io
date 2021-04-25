@@ -18,7 +18,7 @@ function pickPic(picDir) {
 
     return ROOT + "/assets/" + picDir.name + "/" + pic.name;
 }
-function assistIcons(op1, op2, assets) {
+function assistIcons(op1, op2, optr, assets) {
     const span = document.createElement("SPAN");
     const picPath = pickPic(assets);
     for (let i = 0; i < op1; i ++) {
@@ -26,25 +26,31 @@ function assistIcons(op1, op2, assets) {
         img.setAttribute("src", picPath)
         span.appendChild(img)
     }
-    span.appendChild(document.createTextNode(" "));
+    span.appendChild(document.createTextNode(" " + optr + " "))
     for (let i = 0; i < op2; i ++) {
         const img = document.createElement("IMG");
         img.setAttribute("src", picPath)
         span.appendChild(img)
     }
+    span.appendChild(document.createTextNode(" = "))
     return span;
 }
 function questionCell(max, assets) {
     const {op1, op2, optr} = question(max);
     const div = document.createElement("DIV");
-    const q = document.createTextNode(`${op1} ${optr} ${op2} = `);
-    div.appendChild(q);
-    const br = document.createElement("br");
-    div.appendChild(br);
-    div.appendChild(assistIcons(op1, op2, assets));
+    div.appendChild(assistIcons(op1, op2, optr, assets));
+    // const q = document.createTextNode(`${op1} ${optr} ${op2} = `);
+    // div.appendChild(q);
+    div.appendChild(document.createElement("br"));
+    div.appendChild(document.createElement("br"));
+    div.appendChild(document.createElement("br"));
     return div;
 }
 function examPaper(assets) {
+    const headline = document.createElement("H2");
+    headline.appendChild(document.createTextNode("1 2 3 4 5 6 7 8 9 10"))
+    document.body.appendChild(headline);
+
     const tb = document.createElement("TABLE");
     tb.setAttribute("id", "examPaperTable");
     document.body.appendChild(tb);
